@@ -1,0 +1,21 @@
+.item-row {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+    margin: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    background-color: slateblue;
+    color: white;
+    padding-block: 5px;
+    padding-inline: 15px;
+    cursor: pointer;
+}
