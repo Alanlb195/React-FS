@@ -1,10 +1,10 @@
-import { useState, type CSSProperties } from "react";
-import { ItemCounter, ItemInCart } from "./shopping-cart/ItemCOunter";
+import { type CSSProperties } from "react";
+import { ItemCounter, ItemInCart } from "./shopping-cart/ItemCounter";
 
 const firstName = 'Alan'
 const lastName = 'Lopez'
 const favoriteGames = ['Honor of Kings', 'Elden Ring', 'Shaiya']
-const isActiveBtn = true;
+const isActive = true;
 const address = {
     street: 'CDA. Flamingo',
     houseNo: '515'
@@ -16,39 +16,37 @@ const itemsInCart: ItemInCart[] = [
     { productName: "Pro Controller", quantity: 3 },
 ]
 
-export const FirstStepsApp = () => {
-
-    const [isActive, setIsActive] = useState(isActiveBtn)
+export const FirstSteps = () => {
 
     const addressStyles: CSSProperties = {
         backgroundColor: isActive ? 'green' : "red",
-        borderRadius: 10,
-        padding: 10,
         color: "white",
-        marginTop: 20,
-    }
-
-    const handleIsActive = () => {
-        setIsActive(!isActive);
     }
 
     return (
         <>
-            <div style={{
-                display: "flex",
-                flexDirection: "column"
-            }}>
-                <h1>{firstName}</h1>
-                <p>{lastName}</p>
+            <div
+                data-testid="div-app"
+                style={{
+                    display: "flex",
+                    flexDirection: "column"
+                }}>
+                <h1 data-testid="first-name-id">{firstName}</h1>
+                <h3 data-testid="last-name-id">{lastName}</h3>
                 <p>{favoriteGames.join(', ')}</p>
                 <span>{isActive ? 'Active' : 'Not Active'}</span>
-                <button onClick={handleIsActive} className="btn">Change State</button>
                 <p style={addressStyles}>{JSON.stringify(address)}</p>
+
+
                 <p>Carrito de compras</p>
                 {
                     itemsInCart.map(({ productName, quantity }) => {
                         return (
-                            <ItemCounter key={productName} productName={productName} quantity={quantity} />
+                            <ItemCounter
+                                key={productName}
+                                productName={productName}
+                                quantity={quantity}
+                            />
                         )
                     })
                 }
